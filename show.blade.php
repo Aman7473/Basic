@@ -1,69 +1,49 @@
-<center>
 
-    <h1 style="background-color:bisque"> Details  Show </h1>
-   
-    
-    
-    <table style="background-color:aquamarine">
-    
+<table>
     <tr>
-    <th>Sr No</th>
-    <th>Name</th>
-    <th>Email</th>
-    {{-- <th>Password</th> --}}
-    <th>State</th>
-    <th>City</th>
-    <th>Image</th>
-    
+     <th>SrNo</th>
+      <th>Name</th>
+      <th>Class</th>
+      <th>Marks</th>
+      <th>Action</th>
     </tr>
-    @foreach($k as $a)
-    <tr>
-    <td>
-    {{$a->id}}
+    @foreach($a as $p)
     
-    </td>
-    <td>
-        {{$a->name}}
+    <tr>
+        <td>
+            {{$p->id}}
         
+            </td>
+        <td>
+        {{$p->Name}}
+    
         </td>
-    <td>
-        {{$a->email}}
+        <td>
+            {{$p->Class}}
         
-        </td>
-        {{-- <td>
-            {{$a->password}}
-            
-            </td> --}}
+            </td>
             <td>
-                {{$a->state}}
-                
+                {{$p->Marks}}
+            
                 </td>
                 <td>
-                    {{$a->city}}
-                    
+                    <button>
+                   <a class="" href="/edit/{{$p->id}}">Edit</a>
+                </button>
                     </td>
                     <td>
-                        {{-- {{$a->image}} --}}
-                        <img src ="{{asset('uploads/employee/'.$a->image)}}"width="100px"alt="image">
-    
-                        </td>
-    
-    <td>
-    
-    
-        
-    
-       
-    </td>
-    
-    
+                     <form action="/delete/{{$p->id}}"method="post">
+                      @csrf
+                      @method('delete')
+                 <button type="submit">Delete
+                    
+                 </button>
 
-    
+                     </form>
+                        
+                     
+                         </td>
+
     </tr>
-    
-
-    
-    
     @endforeach
-    </table>
-    </center>
+</table>
